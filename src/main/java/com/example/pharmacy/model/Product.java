@@ -17,19 +17,19 @@ public class Product {
     )
     private long id ;
     private String productName;
-    private float price;
+    private double price;
     private int categoryType;
 
     public Product(){
     }
-    public Product(long id, String productName, float price, int categoryType) {
+    public Product(long id, String productName, double price, int categoryType) {
         this.id = id;
         this.productName = productName;
         this.price = price;
         this.categoryType = categoryType;
     }
 
-    public Product(String productName, float price, int categoryType) {
+    public Product(String productName, double price, int categoryType) {
         this.productName = productName;
         this.price = price;
         this.categoryType = categoryType;
@@ -51,11 +51,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

@@ -1,16 +1,23 @@
 package com.example.pharmacy.businesslogic;
 
 import com.example.pharmacy.model.Product;
-import org.springframework.stereotype.Component;
+import com.example.pharmacy.repository.ProductRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 @Service
 public class ProductService {
+    private final ProductRepository productRepository;
+    public ProductService(ProductRepository productRepository ){
+        this.productRepository = productRepository;
+    }
 
-    @GetMapping
     public List<Product> getProducts(){
-        return List.of();
+        return productRepository.findAll();
+    }
+    public void addNewProduct(Product product){
+        //throw new RuntimeException(product.getProductName());
+        System.out.println(product);
+        productRepository.save(product);
     }
 }
