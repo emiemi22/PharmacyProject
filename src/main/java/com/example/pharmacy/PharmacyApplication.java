@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PharmacyApplication {
 
     @Autowired
-    //private JdbcTemplate jdbcTemplate;
     public static void main(String[] args) {
         SpringApplication.run(PharmacyApplication.class, args);
     }

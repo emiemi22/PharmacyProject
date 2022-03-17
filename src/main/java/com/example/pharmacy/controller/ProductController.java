@@ -1,11 +1,12 @@
 package com.example.pharmacy.controller;
 
-import com.example.pharmacy.businesslogic.ProductService;
+import com.example.pharmacy.servicelayer.ProductService;
 import com.example.pharmacy.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/product")
