@@ -37,11 +37,12 @@ public class ProductService {
 
     /**
      * Add new product validation boolean.
-     *
+     * check if a product it is in DB. If it isn't return true
+     * it is used findByName method, which it is implemented in ProductRepo
      * @param product the product
      * @return the boolean
      */
-    public boolean addNewProductValidation(Product product) {
+    public boolean productValidation(Product product) {
         Product p = (Product) productRepository.findByName(product.getProductName());
         if (p == null) {
             return true;
@@ -52,13 +53,12 @@ public class ProductService {
 
     /**
      * Add new product.
-     *
+     * If the validation succeeds add a new element to DB.
      * @param product the product
      */
     public void addNewProduct(Product product) {
 
-        if (addNewProductValidation(product)) {
-            System.out.println(product);
+        if (productValidation(product)) {
             productRepository.addElement(product);
         } else {
             throw new IllegalStateException("product already in DB");
@@ -68,9 +68,15 @@ public class ProductService {
     /**
      * Delete product.
      *
-     * @param productName the product name
+     * @param id the product name
      */
-    public void deleteProduct(String productName) {
+    public void deleteProduct(Long id) {
+        Product product = (Product) productRepository.findById(id);
+        if (product != null) {
+            productRepository.deleteElement(product);
+        } else {
+            throw new IllegalStateException("product is not in DB");
+        }
 
     }
 }

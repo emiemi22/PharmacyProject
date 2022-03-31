@@ -8,4 +8,5 @@ public interface Repository {
     void updateElement(Object o);
     List<Object> getAllElements();
     Object findByName(String name);
+    Object findById(Long id);
 }

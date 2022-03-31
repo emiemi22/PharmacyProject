@@ -48,11 +48,11 @@ public class ProductController {
     /**
      * Delete product.
      *
-     * @param productName the product name
+     * @param id the product id
      */
 //path variable
-    @DeleteMapping(path = "{productName}")
-    public void deleteProduct(@PathVariable("productName") String productName){
-        productService.deleteProduct(productName);
+    @DeleteMapping(path = "{id}")
+    public void deleteProduct(@PathVariable("id") Long id){
+        productService.deleteProduct(id);
     }
 }

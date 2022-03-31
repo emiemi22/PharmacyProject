@@ -28,4 +28,9 @@ public class XMLRepo implements Repository{
     public Object findByName(String name) {
         return null;
     }
+
+    @Override
+    public Object findById(Long id) {
+        return null;
+    }
 }

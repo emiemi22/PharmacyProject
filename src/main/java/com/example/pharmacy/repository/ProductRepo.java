@@ -21,7 +21,8 @@ public class ProductRepo implements Repository {
 
     @Override
     public void deleteElement(Object o) {
-
+        Product p = (Product)o;
+        jpaRepository.deleteById(p.getId());
     }
 
     @Override
@@ -34,7 +35,7 @@ public class ProductRepo implements Repository {
         return Collections.singletonList(jpaRepository.findAll());
     }
 
-
+    @Override
     public Object findByName(String productName) {
 
         List<Product> list = jpaRepository.findAll();
@@ -42,6 +43,19 @@ public class ProductRepo implements Repository {
         for(Object x : list){
             Product p = (Product) x;
             if (p.getProductName().equals(productName)){
+                return x;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Object findById(Long id) {
+        List<Product> list = jpaRepository.findAll();
+
+        for(Object x : list){
+            Product p = (Product) x;
+            if (p.getId() == id ){
                 return x;
             }
         }
