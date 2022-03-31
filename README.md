@@ -15,3 +15,5 @@ So, this project it is able to receive a REQUEST and obtain different types of R
 The workflow it is: REQUEST --> API LAYER --> SERVICE LAYER --> DATA ACCESS LAYER -> DB.
 For testing the application, I used Intelliji HTTP request for a quick verification and PostMan.
 
+Now with an architectural modification in Repository layer, the project it is no longer dependent on a DataBase. We can extract information from any other source, such as CSV, XML, so on. 
+
