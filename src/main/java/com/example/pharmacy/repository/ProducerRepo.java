@@ -1,28 +1,31 @@
 package com.example.pharmacy.repository;
 
+import com.example.pharmacy.model.Producer;
 import com.example.pharmacy.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collections;
 import java.util.List;
-
-
 @org.springframework.stereotype.Repository
-public class ProductRepo implements Repository {
-    private JPAProductRepo jpaRepository;
+public class ProducerRepo implements Repository{
+    private JPAProducerRepo jpaRepository;
+
     @Autowired
-    public ProductRepo(JPAProductRepo jpaRepository){
-        this.jpaRepository = jpaRepository;
+    public ProducerRepo(JPAProducerRepo jpaRepo){
+        this.jpaRepository = jpaRepo;
     }
+
     @Override
     public void addElement(Object o) {
-        jpaRepository.save((Product)o);
+        jpaRepository.save((Producer)o);
     }
 
     @Override
     public void deleteElement(Object o) {
-        Product p = (Product)o;
-        jpaRepository.deleteById(p.getId());
+        Producer p = (Producer) o ;
+        //throw new IllegalStateException(p.toString());
+        jpaRepository.deleteById(p.getIdProducer());
+
     }
 
     @Override
@@ -36,13 +39,13 @@ public class ProductRepo implements Repository {
     }
 
     @Override
-    public Object findByName(String productName) {
+    public Object findByName(String name) {
 
-        List<Product> list = jpaRepository.findAll();
+        List<Producer> list = jpaRepository.findAll();
 
         for(Object x : list){
-            Product p = (Product) x;
-            if (p.getProductName().equals(productName)){
+            Producer p = (Producer) x;
+            if (p.getProducerName().equals(name)){
                 return x;
             }
         }
@@ -51,11 +54,12 @@ public class ProductRepo implements Repository {
 
     @Override
     public Object findById(Long id) {
-        List<Product> list = jpaRepository.findAll();
+        List<Producer> list = jpaRepository.findAll();
 
         for(Object x : list){
-            Product p = (Product) x;
-            if (p.getId() == id ){
+            Producer p = (Producer) x;
+            if (p.getIdProducer() == id ){
+                //throw new IllegalStateException(x.toString());
                 return x;
             }
         }

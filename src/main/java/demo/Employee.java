@@ -7,6 +7,11 @@ public class Employee extends User{
     }
 
     @Override
+    public int numarZile() {
+        return data3.zile()*12;
+    }
+
+    @Override
     public int hashCode() {
         return super.hashCode();
     }

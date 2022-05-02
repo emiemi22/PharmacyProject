@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 /**
  * The type Product service.
@@ -39,6 +39,7 @@ public class ProductService {
      * Add new product validation boolean.
      * check if a product it is in DB. If it isn't return true
      * it is used findByName method, which it is implemented in ProductRepo
+     *
      * @param product the product
      * @return the boolean
      */
@@ -54,6 +55,7 @@ public class ProductService {
     /**
      * Add new product.
      * If the validation succeeds add a new element to DB.
+     *
      * @param product the product
      */
     public void addNewProduct(Product product) {

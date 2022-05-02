@@ -2,7 +2,7 @@ package com.example.pharmacy.repository;
 
 import java.util.List;
 
-public class XMLRepo implements Repository{
+public class ProductXMLRepo implements Repository{
     @Override
     public void addElement(Object o) {
 

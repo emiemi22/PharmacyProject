@@ -53,6 +53,7 @@ public class ProductController {
 //path variable
     @DeleteMapping(path = "{id}")
     public void deleteProduct(@PathVariable("id") Long id){
+
         productService.deleteProduct(id);
     }
 }
