@@ -17,3 +17,10 @@ For testing the application, I used Intelliji HTTP request for a quick verificat
 
 Now with an architectural modification in Repository layer, the project it is no longer dependent on a DataBase. We can extract information from any other source, such as CSV, XML, so on. 
 
+For each layer in application, Controller, Service, Data Access, I created for each class, Product or Producer a UnitTest. Why? To test and to be sure individual unit or component functionalities are working fine. In order to do that I used the framework MOCKITO because allow us the concept of MOCKING which is a process of developing the objects that act as a clone of the real objects. In other words, mocking is a testing technique where mock objects are used instead of real objects for testing purposes. Mock objects provide a specific (dummy) output for a particular (dummy) input passed to it.
+
+For testing the Controllers and Services, I used @Mock and @InjectedMock. @Mock creates a mock. @InjectMocks creates an instance of the class and injects the mocks that are created with the @Mock; by short a Controller needs a Service, and a Service needs Repository. I tested for all the GET methods, and the validation.
+
+
+I added a new table called Producer, which can be a way to develop more functionalities on the application, such as the stock for each drug, or the similar medicaments.
+Also supports REQUESTS, such as POST GET DELETE. In a future step, these request could be done only by the administrator of the site. I tried at this point to create using a Factory Method Design Pattern, more types of users for the application, such as for employees, clients and administrator. Unfortunatly I did not succed to implement it, it was the Easter holiday and I wanted to recharge myself because a pretty harsh period with exams will come. No more excuses, I wanted to have those users for the app to have different functionalities. Such as, a client can order some product, an employee can add a new product/delete/update it, and an administrator can have access to the whole app DB.
