@@ -1,8 +1,6 @@
 package com.example.pharmacy.repository;
-
 import com.example.pharmacy.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -27,7 +25,15 @@ public class ProductRepo implements Repository {
 
     @Override
     public void updateElement(Object o) {
-
+        Product p = (Product) o ;
+        if(jpaRepository.existsById(p.getId())){
+            jpaRepository.deleteById(p.getId());
+            jpaRepository.save(p);
+        }
+        else
+        {
+            throw new IllegalStateException("Product not in DB!");
+        }
     }
 
     @Override
@@ -39,6 +45,7 @@ public class ProductRepo implements Repository {
     public Object findByName(String productName) {
 
         List<Product> list = jpaRepository.findAll();
+        //List<Object> list = this.getAllElements();
 
         for(Object x : list){
             Product p = (Product) x;

@@ -30,7 +30,15 @@ public class ProducerRepo implements Repository{
 
     @Override
     public void updateElement(Object o) {
-
+        Producer p = (Producer) o ;
+        if(jpaRepository.existsById(p.getIdProducer())){
+            jpaRepository.deleteById(p.getIdProducer());
+            jpaRepository.save(p);
+        }
+        else
+        {
+            throw new IllegalStateException("Producer not in DB!");
+        }
     }
 
     @Override
