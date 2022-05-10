@@ -1,5 +1,5 @@
 # PharmacyProject
-Here I am developing an online pharmacy. Now the project is in developing on the backend side using SpringBoot. 
+ I am developing an online pharmacy. Now the project is in developing on the backend side using SpringBoot. 
 
 The project is structurated in API Layer, Service Layer and Data Access Layer.
 For API Layer it is used classes, e.g:ProductController where the requests are divided in categories: GET, POST, DELETE; 
@@ -30,3 +30,6 @@ To tell the mock what to return, I used the when().thenReturn() function, to hav
 
 I added a new table called Producer, which can be a way to develop more functionalities on the application, such as the stock for each drug, or the similar medicaments.
 Also supports REQUESTS, such as POST GET DELETE. In a future step, these request could be done only by the administrator of the site. I tried at this point to create using a Factory Method Design Pattern, more types of users for the application, such as for employees, clients and administrator. Unfortunatly I did not succed to implement it. No more excuses, I wanted to have those users for the app to have different functionalities. Such as, a client can order some product, an employee can add a new product/delete/update it, and an administrator can have access to the whole app DB.
+
+There is a table called Order where a employee can select a product which is needed in pharmacy, and to send it to the producer to increase the stock of that product.
+Also when an order is made, the stock of that product is increased with quantity. And when an order is cancelled the stock of that product decrease. Basically the table order has a foreign key to the product table and another foreign key to the producer.
