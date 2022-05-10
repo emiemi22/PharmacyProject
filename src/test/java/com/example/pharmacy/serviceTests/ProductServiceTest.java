@@ -23,8 +23,8 @@ public class ProductServiceTest {
     private ProductService productService;
     @Test
     public void testGetProducts(){
-        Product product1 = new Product("ibuprofen",12.1,1);
-        Product product2 = new Product("nurofen",11.7,1);
+        Product product1 = new Product("ibuprofen",12.1,1,45);
+        Product product2 = new Product("nurofen",11.7,1,45);
         List<Object> products = new ArrayList<>();
         products.add(product1);
         products.add(product2);
@@ -36,9 +36,9 @@ public class ProductServiceTest {
     }
     @Test
     public void testProductValidation(){
-        Product product1 = new Product("ibuprofen",12.1,1);
-        Product product2 = new Product("nurofen",11.7,1);
-        Product product3 = new Product("aerius",11.7,1);
+        Product product1 = new Product("ibuprofen",12.1,1,45);
+        Product product2 = new Product("nurofen",11.7,1,45);
+        Product product3 = new Product("aerius",11.7,1,45);
         when(productRepo.findByName("nurofen")).thenReturn(product2);
         assertThat(productService.productValidation(product2)).isEqualTo(false);
         assertThat(productService.productValidation(product3)).isEqualTo(true);

@@ -2,6 +2,9 @@ package com.example.pharmacy.repository;
 
 import java.util.List;
 
+/**
+ * The type Product xml repo.
+ */
 public class ProductXMLRepo implements Repository{
     @Override
     public void addElement(Object o) {
@@ -14,7 +17,7 @@ public class ProductXMLRepo implements Repository{
     }
 
     @Override
-    public void updateElement(Object o) {
+    public void updateElement(Long id, Object o) {
 
     }
 

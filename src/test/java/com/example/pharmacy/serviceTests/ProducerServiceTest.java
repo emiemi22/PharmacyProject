@@ -42,6 +42,7 @@ public class ProducerServiceTest {
         Producer producer1 = new Producer("Nuro", "0712345", "nuro@yahoo.com", "Alergetics", 1);
         Producer producer2 = new Producer("Alevia", "0712345", "alevia@yahoo.com", "Alergetics", 1);
         Producer producer3 = new Producer();
+        //set up @before each -> insantiez un producer service si are o dependinta
         when(producerRepo.findByName("Alevia")).thenReturn(producer3);
         assertThat(producerService.producerValidation(producer2)).isEqualTo(false);
         assertThat(producerService.producerValidation(producer1)).isEqualTo(true);

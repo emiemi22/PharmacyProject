@@ -1,7 +1,5 @@
 package com.example.pharmacy.model;
-
-import ch.qos.logback.core.status.StatusUtil;
-
+import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 
 /**
@@ -9,24 +7,26 @@ import javax.persistence.*;
  */
 @Entity
 @Table
+@DynamicUpdate
 public class Product {
     @Id
     @SequenceGenerator(
-            name = "product_seq",sequenceName = "product_seq" , allocationSize = 1
+            name = "product_seq", sequenceName = "product_seq", allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator ="product_sequence"
+            generator = "product_sequence"
     )
-    private long id ;
+    private long id;
     private String productName;
     private double price;
     private int categoryType;
+    private int stock;
 
     /**
      * Instantiates a new Product.
      */
-    public Product(){
+    public Product() {
     }
 
     /**
@@ -37,11 +37,12 @@ public class Product {
      * @param price        the price
      * @param categoryType the category type
      */
-    public Product(long id, String productName, double price, int categoryType) {
+    public Product(long id, String productName, double price, int categoryType, int stock) {
         this.id = id;
         this.productName = productName;
         this.price = price;
         this.categoryType = categoryType;
+        this.stock = stock;
     }
 
     /**
@@ -51,10 +52,11 @@ public class Product {
      * @param price        the price
      * @param categoryType the category type
      */
-    public Product(String productName, double price, int categoryType) {
+    public Product(String productName, double price, int categoryType, int stock) {
         this.productName = productName;
         this.price = price;
         this.categoryType = categoryType;
+        this.stock = stock;
     }
 
     /**
@@ -127,5 +129,13 @@ public class Product {
      */
     public void setCategoryType(int categoryType) {
         this.categoryType = categoryType;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }

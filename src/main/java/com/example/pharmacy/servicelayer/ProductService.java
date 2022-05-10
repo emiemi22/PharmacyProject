@@ -79,6 +79,18 @@ public class ProductService {
         } else {
             throw new IllegalStateException("product is not in DB");
         }
+    }
 
+    public void updateProduct(Long id, Product p) {
+        Product product = (Product) productRepository.findById(id);
+        product.setProductName(p.getProductName());
+        product.setCategoryType(p.getCategoryType());
+        product.setPrice(p.getPrice());
+        product.setStock(p.getStock());
+        if (product != null) {
+            productRepository.updateElement(id,product);
+        } else {
+            throw new IllegalStateException("product is not in DB");
+        }
     }
 }

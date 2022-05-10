@@ -1,7 +1,6 @@
 package com.example.pharmacy.servicelayer;
 
 import com.example.pharmacy.model.Producer;
-import com.example.pharmacy.model.Product;
 import com.example.pharmacy.repository.ProducerRepo;
 import com.example.pharmacy.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;

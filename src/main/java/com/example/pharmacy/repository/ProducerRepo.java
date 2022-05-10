@@ -6,10 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collections;
 import java.util.List;
+
+/**
+ * The type Producer repo.
+ */
 @org.springframework.stereotype.Repository
 public class ProducerRepo implements Repository{
     private JPAProducerRepo jpaRepository;
 
+    /**
+     * Instantiates a new Producer repo.
+     *
+     * @param jpaRepo the jpa repo
+     */
     @Autowired
     public ProducerRepo(JPAProducerRepo jpaRepo){
         this.jpaRepository = jpaRepo;
@@ -29,16 +38,8 @@ public class ProducerRepo implements Repository{
     }
 
     @Override
-    public void updateElement(Object o) {
-        Producer p = (Producer) o ;
-        if(jpaRepository.existsById(p.getIdProducer())){
-            jpaRepository.deleteById(p.getIdProducer());
-            jpaRepository.save(p);
-        }
-        else
-        {
-            throw new IllegalStateException("Producer not in DB!");
-        }
+    public void updateElement(Long id, Object o) {
+
     }
 
     @Override

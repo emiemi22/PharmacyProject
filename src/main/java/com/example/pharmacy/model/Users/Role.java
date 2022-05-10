@@ -1,5 +1,19 @@
 package com.example.pharmacy.model.Users;
 
+/**
+ * The enum Role.
+ */
 public enum Role {
-    EMPLOYEE, ADMINISTRATOR, CLIENT;
+    /**
+     * Employee role.
+     */
+    EMPLOYEE,
+    /**
+     * Administrator role.
+     */
+    ADMINISTRATOR,
+    /**
+     * Client role.
+     */
+    CLIENT;
 }

@@ -22,8 +22,8 @@ public class ProductControllerTest {
 
     @Test
     public void testGetProducts() {
-        Product product1 = new Product("ibuprofen", 12.1, 1);
-        Product product2 = new Product("nurofen", 11.7, 1);
+        Product product1 = new Product("ibuprofen", 12.1, 1,23);
+        Product product2 = new Product("nurofen", 11.7, 1,23);
         List<Object> products = new ArrayList<>();
         products.add(product1);
         products.add(product2);

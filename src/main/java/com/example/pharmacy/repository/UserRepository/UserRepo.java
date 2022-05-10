@@ -1,13 +1,26 @@
-package com.example.pharmacy.repository;
+package com.example.pharmacy.repository.UserRepository;
 
 import com.example.pharmacy.model.Users.BasicUser;
+import com.example.pharmacy.repository.Repository;
+import com.example.pharmacy.repository.UserRepository.JPAUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
 import java.util.List;
 
-public class UserRepo implements Repository{
+/**
+ * The type User repo.
+ */
+@org.springframework.stereotype.Repository
+public class UserRepo implements Repository {
 
     private JPAUserRepo jpaRepository;
+
+    /**
+     * Instantiates a new User repo.
+     *
+     * @param jpaRepo the jpa repo
+     */
     @Autowired
     public UserRepo(JPAUserRepo jpaRepo){
         this.jpaRepository = jpaRepo;
@@ -23,13 +36,13 @@ public class UserRepo implements Repository{
     }
 
     @Override
-    public void updateElement(Object o) {
+    public void updateElement(Long id, Object o) {
 
     }
 
     @Override
     public List<Object> getAllElements() {
-        return null;
+        return Collections.singletonList(jpaRepository.findAll());
     }
 
     @Override

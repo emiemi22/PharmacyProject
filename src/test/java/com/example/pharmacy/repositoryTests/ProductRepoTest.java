@@ -20,9 +20,9 @@ public class ProductRepoTest {
 
     @Test
     public void getAllElementsTest() {
-        Product product1 = new Product("ibuprofen", 12.1, 1);
-        Product product2 = new Product("nurofen", 11.7, 1);
-        Product product3 = new Product("nurofen2", 11.7, 1);
+        Product product1 = new Product("ibuprofen", 12.1, 1,23);
+        Product product2 = new Product("nurofen", 11.7, 1,43);
+        Product product3 = new Product("nurofen2", 11.7, 1,45);
         List<Object> products = new ArrayList<>();
         products.add(product1);
         products.add(product2);
@@ -35,8 +35,8 @@ public class ProductRepoTest {
 
     @Test
     public void findByNameTest() {
-        Product product1 = new Product("ibuprofen", 12.1, 1);
-        Product product2 = new Product("nurofen", 11.7, 1);
+        Product product1 = new Product("ibuprofen", 12.1, 1,23);
+        Product product2 = new Product("nurofen", 11.7, 1,45);
         when(productRepo.findByName("nurofen")).thenReturn(product1);
         assertThat(productRepo.findByName("nurofen")).isEqualTo(product1);
         assertThat(productRepo.findByName("ibuprofen")).isNotEqualTo(product2);
@@ -44,8 +44,8 @@ public class ProductRepoTest {
 
     @Test
     public void findByIdTest() {
-        Product product1 = new Product("ibuprofen", 12.1, 1);
-        Product product2 = new Product("nurofen", 11.7, 1);
+        Product product1 = new Product("ibuprofen", 12.1, 1,123);
+        Product product2 = new Product("nurofen", 11.7, 1,124);
         when(productRepo.findById(1L)).thenReturn(product1);
         assertThat(productRepo.findById(1L)).isEqualTo(product1);
         assertThat(productRepo.findById(2L)).isNotEqualTo(product1);
