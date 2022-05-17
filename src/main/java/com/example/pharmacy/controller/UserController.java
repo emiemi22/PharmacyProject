@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping("api/v1/user_table")
 public class UserController {
     private final UserService userService;
 
@@ -18,6 +18,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping
     public List<Object> getUsers(){
         return userService.getUsers();
@@ -25,8 +26,12 @@ public class UserController {
     @PostMapping
     @ResponseBody
     public void addNewUser(@RequestBody RequestUser basicUser){
-        UserFactory userFactory = new UserFactory();
-        BasicUser b = userFactory.constructBasicUser(basicUser.getRole(),basicUser.getFirstName(), basicUser.getLastName(), basicUser.getEmailAddress(), basicUser.getPassword());
-        userService.addNewUser(b);
+       // UserFactory userFactory = new UserFactory();
+        //BasicUser b = userFactory.constructBasicUser(basicUser.getRole(),basicUser.getFirstName(), basicUser.getLastName(), basicUser.getEmailAddress(), basicUser.getPassword());
+        userService.addNewUser(basicUser);
+    }
+    @DeleteMapping(path = "{id}")
+    public void deleteUser(@PathVariable("id") Long id){
+        userService.deleteUser(id);
     }
 }

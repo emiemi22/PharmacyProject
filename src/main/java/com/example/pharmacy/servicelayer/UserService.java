@@ -1,5 +1,6 @@
 package com.example.pharmacy.servicelayer;
 import com.example.pharmacy.model.Users.BasicUser;
+import com.example.pharmacy.model.Users.RequestUser;
 import com.example.pharmacy.repository.Repository;
 import com.example.pharmacy.repository.UserRepository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,18 @@ public class UserService {
     }
 
 
-    public void addNewUser(BasicUser user) {
+    public void addNewUser(RequestUser user) {
         userRepository.addElement(user);
+    }
+
+    public void deleteUser(Long id){
+        RequestUser requestUser = (RequestUser) userRepository.findById(id);
+        if(requestUser == null){
+            throw new IllegalStateException("User not in db");
+        }
+        else{
+            userRepository.deleteElement(requestUser);
+        }
+
     }
 }
