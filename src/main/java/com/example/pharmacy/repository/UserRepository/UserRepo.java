@@ -1,5 +1,6 @@
 package com.example.pharmacy.repository.UserRepository;
 
+import com.example.pharmacy.model.Producer;
 import com.example.pharmacy.model.Product;
 import com.example.pharmacy.model.Users.BasicUser;
 import com.example.pharmacy.model.Users.RequestUser;
@@ -7,6 +8,7 @@ import com.example.pharmacy.repository.Repository;
 import com.example.pharmacy.repository.UserRepository.JPAUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -45,7 +47,12 @@ public class UserRepo implements Repository {
 
     @Override
     public List<Object> getAllElements() {
-        return Collections.singletonList(jpaRepository.findAll());
+        List<Object> listOfObjects = new ArrayList<>();
+        List<RequestUser> listOfUsers = jpaRepository.findAll();
+        for(RequestUser p : listOfUsers){
+            listOfObjects.add(p);
+        }
+        return listOfObjects;
     }
 
     @Override

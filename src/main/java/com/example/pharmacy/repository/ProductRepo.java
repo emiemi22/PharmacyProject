@@ -3,6 +3,7 @@ package com.example.pharmacy.repository;
 import com.example.pharmacy.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -43,7 +44,12 @@ public class ProductRepo implements Repository {
 
     @Override
     public List<Object> getAllElements() {
-        return Collections.singletonList(jpaRepository.findAll());
+        List<Object> listOfObjects = new ArrayList<>();
+        List<Product> listOfProducts = jpaRepository.findAll();
+        for(Product p : listOfProducts){
+            listOfObjects.add(p);
+        }
+        return listOfObjects;
     }
 
     @Override

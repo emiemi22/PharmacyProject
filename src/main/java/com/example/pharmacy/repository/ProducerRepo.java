@@ -4,6 +4,7 @@ import com.example.pharmacy.model.Producer;
 import com.example.pharmacy.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,7 +45,12 @@ public class ProducerRepo implements Repository{
 
     @Override
     public List<Object> getAllElements() {
-        return Collections.singletonList(jpaRepository.findAll());
+        List<Object> listOfObjects = new ArrayList<>();
+        List<Producer> listOfProducers = jpaRepository.findAll();
+        for(Producer p : listOfProducers){
+            listOfObjects.add(p);
+        }
+        return listOfObjects;
     }
 
     @Override
