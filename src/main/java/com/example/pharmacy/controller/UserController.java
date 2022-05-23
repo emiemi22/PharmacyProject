@@ -25,7 +25,7 @@ public class UserController {
     }
     @PostMapping
     @ResponseBody
-    public void addNewUser(@RequestBody RequestUser basicUser){
+    public void addNewUser(RequestUser basicUser){
        // UserFactory userFactory = new UserFactory();
         //BasicUser b = userFactory.constructBasicUser(basicUser.getRole(),basicUser.getFirstName(), basicUser.getLastName(), basicUser.getEmailAddress(), basicUser.getPassword());
         userService.addNewUser(basicUser);

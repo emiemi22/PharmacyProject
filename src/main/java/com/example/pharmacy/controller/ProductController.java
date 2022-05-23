@@ -21,7 +21,7 @@ public class ProductController {
      * @param productService the product service
      */
     @Autowired
-    public ProductController(ProductService productService){
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -31,7 +31,7 @@ public class ProductController {
      * @return the list
      */
     @GetMapping
-    public List<Object> getProducts(){
+    public List<Object> getProducts() {
         return productService.getProducts();
     }
 
@@ -41,7 +41,7 @@ public class ProductController {
      * @param product the product
      */
     @PostMapping
-    public void addNewProduct(@RequestBody Product product){
+    public void addNewProduct(Product product) {
         productService.addNewProduct(product);
     }
 
@@ -52,12 +52,13 @@ public class ProductController {
      */
 //path variable
     @DeleteMapping(path = "{id}")
-    public void deleteProduct(@PathVariable("id") Long id){
+    public void deleteProduct(@PathVariable("id") Long id) {
 
         productService.deleteProduct(id);
     }
-    @PutMapping(path ="{id}" )
-    public void updateProduct(@RequestBody Product product, @PathVariable("id") Long id){
-        productService.updateProduct(id,product);
+
+    @PutMapping(path = "{id}")
+    public void updateProduct(@PathVariable("id") Long id,@RequestBody Product product) {
+        productService.updateProduct(id, product);
     }
 }
